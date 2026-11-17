@@ -1,0 +1,66 @@
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">A</span><div><strong>AMMA</strong><small>Gestão de participantes</small></div></div>
+  <span class="tag">MVP demonstrativo</span>
+</header>
+
+<main class="container">
+  <section class="intro">
+    <p class="eyebrow">ÁREA ADMINISTRATIVA</p>
+    <h1>Organização que aproxima pessoas.</h1>
+    <p>Gerencie participantes e atividades em um só lugar.</p>
+  </section>
+
+  <nav class="tabs" aria-label="Seções do sistema">
+    <button type="button" [class.active]="aba === 'participantes'" (click)="aba = 'participantes'">Participantes</button>
+    <button type="button" [class.active]="aba === 'atividades'" (click)="aba = 'atividades'">Atividades</button>
+  </nav>
+
+  <p class="notice success" role="status" *ngIf="mensagem">{{ mensagem }}</p>
+  <p class="notice error" role="alert" *ngIf="erro">{{ erro }}</p>
+
+  <section *ngIf="aba === 'participantes'" class="grid">
+    <article class="panel">
+      <h2>Cadastrar participante</h2>
+      <form (ngSubmit)="cadastrarParticipante()">
+        <label for="nome">Nome completo *</label>
+        <input id="nome" name="nome" [(ngModel)]="novoParticipante.nome" required minlength="2" maxlength="120">
+        <label for="nascimento">Data de nascimento</label>
+        <input id="nascimento" name="nascimento" type="date" [(ngModel)]="novoParticipante.data_nascimento">
+        <label for="telefone">Telefone</label>
+        <input id="telefone" name="telefone" type="tel" [(ngModel)]="novoParticipante.telefone" maxlength="30">
+        <button class="primary" type="submit">Salvar participante</button>
+      </form>
+    </article>
+    <article class="panel">
+      <div class="panel-heading"><h2>Participantes cadastrados</h2><span class="count">{{ participantes.length }}</span></div>
+      <div class="search"><label class="sr-only" for="busca">Buscar participante</label><input id="busca" name="busca" placeholder="Buscar por nome..." [(ngModel)]="busca" (input)="carregarParticipantes()"></div>
+      <div *ngIf="participantes.length === 0" class="empty">Nenhum participante encontrado.</div>
+      <ul class="records">
+        <li *ngFor="let p of participantes"><div><strong>{{ p.nome }}</strong><small>{{ p.telefone || 'Telefone não informado' }}</small></div><span class="status">{{ p.status }}</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <section *ngIf="aba === 'atividades'" class="grid">
+    <article class="panel">
+      <h2>Cadastrar atividade</h2>
+      <form (ngSubmit)="cadastrarAtividade()">
+        <label for="atividade">Nome da atividade *</label>
+        <input id="atividade" name="atividade" [(ngModel)]="novaAtividade.nome" required minlength="2" maxlength="120">
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" name="descricao" rows="3" [(ngModel)]="novaAtividade.descricao" maxlength="500"></textarea>
+        <label for="data">Data de início *</label>
+        <input id="data" name="data" type="date" [(ngModel)]="novaAtividade.data_inicio" required>
+        <button class="primary" type="submit">Salvar atividade</button>
+      </form>
+    </article>
+    <article class="panel">
+      <div class="panel-heading"><h2>Atividades cadastradas</h2><span class="count">{{ atividades.length }}</span></div>
+      <div *ngIf="atividades.length === 0" class="empty">Nenhuma atividade encontrada.</div>
+      <ul class="records">
+        <li *ngFor="let a of atividades"><div><strong>{{ a.nome }}</strong><small>{{ a.data_inicio }} · {{ a.descricao || 'Sem descrição' }}</small></div><span class="status">{{ a.status }}</span></li>
+      </ul>
+    </article>
+  </section>
+  <footer>AMMA · Protótipo inicial para fins acadêmicos. Utilize dados fictícios.</footer>
+</main>
