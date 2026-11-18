@@ -1,0 +1,28 @@
+# Cenários de teste do MVP AMMA
+
+Este documento apresenta os principais cenários previstos para verificar as funcionalidades do sistema de gestão.
+
+## 1. Cadastro de participantes
+Verificar se o sistema permite cadastrar participantes com os dados obrigatórios e apresentar mensagens adequadas quando houver informações inválidas.
+
+## 2. Consulta de participantes
+Verificar se os participantes cadastrados podem ser localizados e consultados corretamente.
+
+## 3. Cadastro de atividades
+Verificar o registro de atividades com nome, descrição, data de início e situação.
+
+## 4. Inscrição em atividades
+Verificar se um participante pode ser inscrito em uma atividade e se o sistema impede inscrições duplicadas para a mesma atividade.
+
+## 5. Registro de frequência
+Verificar se o sistema permite registrar a presença ou ausência de participantes inscritos, respeitando a identificação da inscrição e a data do registro.
+
+## Critérios gerais
+
+- Os dados obrigatórios devem ser validados.
+- Informações inválidas devem gerar mensagens de erro compreensíveis.
+- Registros devem ser armazenados e recuperados corretamente.
+- Inscrições duplicadas devem ser impedidas.
+- O acesso às operações protegidas deve exigir autenticação.
+
+Estes cenários servem como referência para a execução e ampliação dos testes automatizados com Pytest.
