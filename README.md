@@ -110,3 +110,29 @@ Os testes usam banco SQLite isolado e verificam login, proteção de rotas, cada
 - Frequência: vínculo com inscrição, data de registro e presença.
 
 A restrição única impede duas inscrições do mesmo participante na mesma atividade e dois registros de frequência para a mesma inscrição na mesma data.
+
+## Visão geral do projeto
+
+O MVP de Gestão AMMA é uma aplicação web responsiva desenvolvida para apoiar a organização das atividades administrativas da Associação Missionária Mãos Ativas.
+
+## Objetivo
+
+Centralizar informações de participantes, atividades, inscrições e registros de frequência, facilitando a consulta e o acompanhamento das informações.
+
+## Funcionalidades principais
+
+- Cadastro, edição e consulta de participantes.
+- Cadastro e organização de atividades.
+- Inscrição de participantes nas atividades.
+- Registro e consulta de frequência.
+
+## Tecnologias previstas
+
+- Angular e TypeScript no frontend.
+- Python e FastAPI no backend.
+- PostgreSQL para persistência dos dados.
+- Pytest para testes automatizados.
+
+## Organização
+
+O projeto está dividido em frontend e backend, com responsabilidades separadas entre a interface de usuário, a lógica da aplicação e o acesso aos dados.
